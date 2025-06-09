@@ -1,0 +1,23 @@
+{
+  "name": "neuma",
+  "version": "1.0.0",
+  "description": "Site do Neuma",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mabelbieger/Neuma.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mabelbieger/Neuma/issues"
+  },
+  "homepage": "https://github.com/mabelbieger/Neuma#readme",
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}

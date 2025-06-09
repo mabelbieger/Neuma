@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neuma - Cadastro</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #150B53;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #150B53;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            width: 90%;
+            max-width: 900px;
+            min-height: 500px;
+            display: flex;
+        }
+
+        .left-panel {
+            flex: 1;
+            background: #CED0FF;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
+            position: relative;
+        }
+
+        .right-panel {
+            flex: 1;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background: #F9F9F9;
+            
+        }
+
+        .logo-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .logo-image {
+            height: 300px;
+            object-fit: contain;
+        }
+
+        .logo-text {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #6B46C1;
+        }
+
+        .form-title {
+            font-size: 2rem;
+            color: #2D1B69;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .form-icon {
+            height: 45px;
+            object-fit: contain;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #E5E7EB;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: white;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #6B46C1;
+            box-shadow: 0 0 0 3px rgba(107, 70, 193, 0.1);
+        }
+
+        .radio-group {
+            display: flex;
+            gap: 20px;
+            margin-top: 10px;
+        }
+
+        .radio-option {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+        }
+
+        .radio-option input[type="radio"] {
+            width: auto;
+            margin: 0;
+        }
+
+        .btn-primary {
+            width: 100%;
+            padding: 15px;
+            background: #CED0FF;
+            color: #150B53;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(107, 70, 193, 0.3);
+        }
+
+        .link-text {
+            text-align: center;
+            margin-top: 20px;
+            color: #6B46C1;
+        }
+
+        .link-text a {
+            color: #6B46C1;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .link-text a:hover {
+            text-decoration: underline;
+        }
+
+        /* Estilos para quando as imagens não carregarem */
+        .logo-image:not([src]), .logo-image[src=""] {
+            display: none;
+        }
+
+        .form-icon:not([src]), .form-icon[src=""] {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                width: 95%;
+                min-height: auto;
+            }
+            
+            .left-panel {
+                padding: 30px 20px;
+            }
+            
+            .right-panel {
+                padding: 30px 20px;
+            }
+            
+            .logo-text {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        
+        <div class="right-panel">
+            <h2 class="form-title">
+                Cadastro 
+                <img src="gato_neuma.png" alt="Ícone Cadastro" class="form-icon">
+            </h2>
+            <form id="cadastroForm">
+                <div class="form-group">
+                    <input type="text" id="nomeCompleto" placeholder="Nome completo" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" id="email" placeholder="E-mail" required>
+                </div>
+                <div class="form-group">
+                    <input type="password" id="senha" placeholder="Senha" required>
+                </div>
+                <div class="radio-group">
+                    <div class="radio-option">
+                        <input type="radio" id="professor" name="tipoUsuario" value="professor" required>
+                        <label for="professor">Professor</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="estudante" name="tipoUsuario" value="estudante" required>
+                        <label for="estudante">Estudante</label>
+                    </div>
+                </div>
+                <button type="submit" class="btn-primary">Cadastrar-se</button>
+            </form>
+            <p class="link-text">
+                Já possui uma conta? <a href="login.html">Faça o login</a>
+            </p>
+        </div>
+
+        <div class="left-panel">
+            <div class="logo-container">
+                <img src="logo neuma 2025 transparente.png" alt="Logo Neuma" class="logo-image">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Manipulação do formulário de cadastro
+        document.getElementById('cadastroForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const dadosCadastro = {
+                nomeCompleto: document.getElementById('nomeCompleto').value,
+                email: document.getElementById('email').value,
+                senha: document.getElementById('senha').value,
+                tipoUsuario: document.querySelector('input[name="tipoUsuario"]:checked').value
+            };
+            
+            console.log('Dados do cadastro:', dadosCadastro);
+            
+            // Aqui você fará a integração com sua API
+            // Exemplo de como será:
+            /*
+            fetch('/api/cadastro', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(dadosCadastro)
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Sucesso:', data);
+                alert('Cadastro realizado com sucesso!');
+                // Redirecionar para login
+                window.location.href = 'login.html';
+            })
+            .catch((error) => {
+                console.error('Erro:', error);
+                alert('Erro ao realizar cadastro. Tente novamente.');
+            });
+            */
+            
+            // Por enquanto, apenas mostrar os dados no console e uma mensagem
+            alert('Cadastro realizado com sucesso!\n\nDados salvos:\n' + 
+                  'Nome: ' + dadosCadastro.nomeCompleto + '\n' +
+                  'Email: ' + dadosCadastro.email + '\n' +
+                  'Tipo: ' + dadosCadastro.tipoUsuario);
+            
+            // Limpar formulário
+            this.reset();
+        });
+
+        // Adicionar efeitos visuais nos inputs
+        document.querySelectorAll('input').forEach(input => {
+            input.addEventListener('focus', function() {
+                this.parentElement.style.transform = 'scale(1.02)';
+            });
+            
+            input.addEventListener('blur', function() {
+                this.parentElement.style.transform = 'scale(1)';
+            });
+        });
+    </script>
+</body>
+</html>

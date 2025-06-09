@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home depois do cadastro inicial do aluno</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #F9F9F9;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .header {
+            width: 100%;
+            height: 200px;
+            background: #150B53;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #F9F9F9;
+        }
+
+        .logo {
+            max-height: 100%;
+            max-width: 100%;
+        }
+        
+
+        section {
+        padding: 60px 20px;
+        max-width: 1000px;
+        margin: auto;
+        }
+
+        h1, h2 {
+        text-align: center;
+        margin-bottom: 20px;
+        margin-top: 40px;
+        }
+
+        p {
+        text-align: center;
+        margin-bottom: 20px;
+        }
+
+        .btn {
+        display: block;
+        width: fit-content;
+        margin: 40px auto 0;
+        padding: 12px 24px;
+        background-color: #150B53;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 8px;
+        font-weight: bold;
+        }
+
+        .vark {
+        background-color: #e6e4ff;
+        }
+
+
+        .card {
+        background: #fff;
+        padding: 20px;
+        border-radius: 12px;
+        box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .sistema {
+        margin: 40px 0;
+        }
+
+        .sistema h3 {
+        color: #2b1d52;
+        }
+
+        .sistema ul {
+        list-style: disc;
+        margin-left: 20px;
+        }
+
+        .footer {
+        background-color: #CED0FF;
+        padding: 40px 20px;
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        font-size: 14px;
+        }
+
+        .footer div {
+        flex: 1;
+        min-width: 200px;
+        margin-bottom: 20px;
+        }
+
+        .sistemas {
+        padding: 60px 20px;
+        max-width: 1000px;
+        margin: auto;
+        }
+
+        .sistemas h2 {
+        text-align: center;
+        font-size: 2rem;
+        margin-bottom: 10px;
+        }
+
+        .sistemas .descricao {
+        text-align: center;
+        max-width: 700px;
+        margin: 0 auto 40px;
+        font-size: 1.1rem;
+        line-height: 1.6;
+        }
+
+        .sistema-card {
+        display: flex;
+        gap: 20px;
+        align-items: center;
+        background-color: #e2e4ff56;
+        padding: 20px;
+        border-radius: 12px;
+        margin-bottom: 30px;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+        flex-wrap: wrap;
+        }
+
+        .letra-sensorial {
+        flex: 0 0 80px;
+        font-size: 64px;
+        font-weight: bold;
+        color: #150B53;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #CED0FF;
+        border-radius: 12px;
+        height: 80px;
+        width: 80px;
+        }
+
+        .conteudo-sensorial {
+        flex: 1;
+        min-width: 200px;
+        }
+
+        .conteudo-sensorial h3 {
+        margin-top: 0;
+        font-size: 1.3rem;
+        color: #222;
+        }
+
+        .conteudo-sensorial ul {
+        list-style: none;
+        padding: 0;
+        }
+
+        .conteudo-sensorial li {
+        margin-bottom: 10px;
+        padding-left: 1.2em;
+        position: relative;
+        }
+
+        .conteudo-sensorial li::before {
+        content: "✓";
+        position: absolute;
+        left: 0;
+        color: #2b1d52;
+        font-weight: bold;
+        }
+
+        .secao-vark {
+        background-color: #CED0FF;
+        border-radius: 20px;
+        padding: 30px 30px 50px;
+        box-shadow: 0 10px 30px rgba(26, 0, 122, 0.236);
+        margin: 50px auto;
+        max-width: 1000px;
+        }
+
+        .vark-container {
+        max-width: 1000px;
+        margin: 0 auto;
+        }
+
+        .vark-container h2 {
+        font-size: 2rem;
+        margin-bottom: 10px;
+        color: #2b1d52;
+        }
+
+        .vark-container p {
+        font-size: 1.1rem;
+        margin-bottom: 10px;
+        line-height: 1.6;
+        color: #333;
+        }
+
+        .vark-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+        margin-top: 30px;
+        }
+
+
+        .vark-card {
+        background: white;
+        border: 1px solid #d1ccf1;
+        border-radius: 12px;
+        padding: 20px;
+        box-shadow: 0 2px 6px rgba(140, 92, 175, 0.395);
+        text-align: left;
+        }
+
+        .vark-card h3 {
+        margin-top: 0;
+        color: #2b1d52;
+        font-size: 1.2rem;
+        }
+
+        .vark-card p {
+        font-size: 0.95rem;
+        color: #444;
+        margin-top: 8px;
+        text-align: left;
+        }
+
+        .link-contato {
+          text-decoration: none;
+          color: black;
+        }
+
+        .link-contato:hover {
+          color: #5d00ff !important;
+          font-weight: bold;
+        }
+
+        .link-contato:visited,
+        .link-contato:active,
+        .link-contato:focus {
+          color: black;
+          outline: none;
+        }
+
+          @media (max-width: 768px) {
+    h1, h2 {
+        font-size: 1.5rem;
+    }
+
+    .btn {
+        width: 100%;
+        text-align: center;
+        padding: 14px;
+    }
+
+    .vark-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .sistema-card {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .letra-sensorial {
+        margin-bottom: 15px;
+        width: 60px;
+        height: 60px;
+        font-size: 48px;
+    }
+
+    .conteudo-sensorial h3 {
+        font-size: 1.1rem;
+    }
+
+    .footer {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .footer div {
+        margin-bottom: 30px;
+    }
+
+    .footer img {
+        height: 120px;
+    }
+
+    section, .sistemas, .secao-vark {
+        padding: 30px 15px;
+    }
+
+    .vark-card {
+        padding: 15px;
+    }
+
+    .vark-card h3 {
+        font-size: 1.1rem;
+    }
+
+    .vark-card p {
+        font-size: 0.9rem;
+    }
+}
+
+    </style>
+
+
+</head>
+<body>
+    
+    <div class="header">
+        <img src="/imagens/logo neuma 2025 transparente.png" alt="Logo Neuma" class="logo">
+    </div>
+    <div class="main1"></div>
+
+    <section class="intro">
+    <h1>Site para estímulo do VARK na disciplina de Matemática</h1>
+    <p>
+Saber como você aprende melhor pode tornar as aulas de Matemática mais fáceis, interessantes e produtivas.
+<br>Ao conhecer seu estilo de aprendizagem, fica mais fácil entender os conceitos e melhorar seu desempenho.
+        <br> <strong>Clique no botão abaixo e descubra seu jeito de aprender!</strong>
+    </p>
+
+    <a href=" " class="btn">Realizar o Teste VARK</a>
+  </section>
+
+  <div style="
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #150B53;
+  margin: 50px 0;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  letter-spacing: 15px;
+">
+  + − × ÷ = π
+</div>
+
+
+  <section class="secao-vark">
+  <div class="vark-container">
+    
+    <div class="vark-grid">
+      <div class="vark-card">
+        <h3>O que é o VARK?</h3>
+        <p>O VARK - Visual (Visual), Auditiva (Auditory), Leitura/Escrita (Read/write), Cinestésica (Kinesthetic) - é uma abordagem que identifica os estilos de aprendizagem predominantes em cada pessoa, ajudando cada indivíduo a descobrir como assimila melhor as informações.</p>
+      </div>
+      <div class="vark-card">
+        <h3>Por que usá-lo no ensino da Matemática?</h3>
+        <p>Conhecer o perfil de aprendizagem dos estudantes ajuda a adaptar o ensino da matemática, tornando as aulas mais claras, envolventes e eficazes para cada tipo de aprendiz.</p>
+      </div>
+      <div class="vark-card">
+        <h3>Dificuldades na aprendizagem da Matemática</h3>
+        <p>Entender o estilo de aprendizagem por meio do VARK pode ajudar a superar desafios comuns no aprendizado da matemática, tornando o processo mais acessível e personalizado.</p>
+      </div>
+      <div class="vark-card">
+        <h3>Aplicação do VARK no ensino </h3>
+        <p>O VARK é uma ferramenta valiosa para professores e educadores, permitindo a personalização de métodos de ensino e potencializando o desempenho dos alunos em matemática.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div style="
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #150B53;
+  margin: 50px 0;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  letter-spacing: 15px;
+">
+  + − × ÷ = π
+</div>
+
+  <section class="sistemas">
+  <h2>Estilos de aprendizagem</h2>
+  <p class="descricao">
+    O VARK reconhece quatro estilos:
+  </p>
+
+  <div class="sistema-card">
+    <div class="letra-sensorial">V</div>
+    <div class="conteudo-sensorial">
+      <h3 style="margin-bottom: 15px;">Visual</h3>
+      <ul>
+        <li>Preferem imagens, gráficos, diagramas e esquemas.</li>
+        <li>Memorizam com facilidade o que veem representado visualmente.</li>
+        <li>Gostam de mapas mentais e apresentações com cores e formas.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="sistema-card">
+    <div class="letra-sensorial">A</div>
+    <div class="conteudo-sensorial">
+      <h3 style="margin-bottom: 15px;">Auditivo</h3>
+      <ul>
+        <li>Preferem ouvir explicações e conversas em vez de ler.</li>
+        <li>Lembram de detalhes de sons ou palavras ouvidas com clareza.</li>
+        <li>Tendem a gostar de músicas ou gravações relacionadas ao conteúdo.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="sistema-card">
+    <div class="letra-sensorial">R</div>
+    <div class="conteudo-sensorial">
+      <h3 style="margin-bottom: 15px;">Leitura/Escrita</h3>
+      <ul>
+        <li>Aprendem melhor lendo e escrevendo sobre o conteúdo.</li>
+        <li>Gostam de anotar, resumir e estudar por textos escritos.</li>
+        <li>Preferem conteúdos em forma de listas, textos e manuais.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="sistema-card">
+    <div class="letra-sensorial">K</div>
+    <div class="conteudo-sensorial">
+      <h3 style="margin-bottom: 15px;">Cinestésico</h3>
+      <ul>
+        <li>Aprendem melhor por meio da prática e experiências.</li>
+        <li>Tendem a lembrar do que fizeram ou sentiram fisicamente durante o aprendizado.</li>
+        <li>Gostam de atividades práticas, simulações, experimentos e uso do corpo no processo de aprendizagem.</li>
+      </ul>
+    </div>
+  </div>
+
+</section>
+
+  <footer class="footer">
+
+    <div style="margin-top: 10px;">
+      <h2><strong>Contato:</strong></h2>
+      <p><strong>Instagram:</strong> <a href="https://www.instagram.com/projeto_neuma/" target="_blank" class="link-contato">@projeto_neuma</a>
+<br><strong>E-mail: </strong>projetoneuma@gmail.com</p>
+    </div>
+
+    <img src="/imagens/logo neuma 2025 transparente.png" alt="Logo" height="170" style="object-fit: contain;">
+
+    <div style="margin-top: 10px;">
+      <h2><strong>Desenvolvedoras:</strong></h2>
+      <p>Mariana Machado Welter<br>Marina Isabel Bieger</p>
+    </div>
+  </footer>
+
+</body>
+</html>

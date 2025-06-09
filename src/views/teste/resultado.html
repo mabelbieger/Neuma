@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultado do Teste VARK</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #CED0FF;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: #F9F9F9;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: #150B53;
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .result-card {
+            background: #4e13c6;
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(121, 55, 253, 0.226);
+        }
+
+        .result-icon {
+            font-size: 4em;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .result-title {
+            font-size: 2.2em;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .result-subtitle {
+            font-size: 1.3em;
+            opacity: 0.9;
+            margin-bottom: 20px;
+        }
+
+        .result-description {
+            font-size: 1.1em;
+            line-height: 1.8;
+            background: rgba(255, 255, 255, 0.132);
+            padding: 20px;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+        }
+
+        .scores-section {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+        }
+
+        .scores-section h3 {
+            text-align: center;
+            margin-bottom: 25px;
+            color: #2c3e50;
+            font-size: 1.5em;
+        }
+
+        .score-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            padding: 15px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .score-icon {
+            font-size: 2em;
+            margin-right: 20px;
+            width: 60px;
+            text-align: center;
+        }
+
+        .score-details {
+            flex: 1;
+        }
+
+        .score-name {
+            font-weight: 600;
+            font-size: 1.2em;
+            margin-bottom: 5px;
+        }
+
+        .score-description {
+            color: #6c757d;
+            font-size: 0.9em;
+        }
+
+        .score-bar {
+            width: 200px;
+            height: 20px;
+            background: #ebe9ef;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-left: 20px;
+        }
+
+        .score-fill {
+            height: 100%;
+            transition: width 1s ease-in-out;
+            border-radius: 10px;
+        }
+
+        .score-percentage {
+            margin-left: 15px;
+            font-weight: 600;
+            color: #2c3e50;
+            min-width: 40px;
+        }
+
+        .tips-section {
+            background: #fff;
+            padding: 30px;
+            border-radius: 15px;
+            border: 2px solid #e9ecef;
+        }
+
+        .tips-section h3 {
+            color: #402c50;
+            margin-bottom: 20px;
+            font-size: 1.5em;
+        }
+
+        .tip-card {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            border-left: 4px solid #7b4ffe;
+        }
+
+        .tip-title {
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+
+        .tip-content {
+            color: #6c757d;
+            line-height: 1.6;
+        }
+
+        .actions {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 30px;
+        }
+
+        .btn {
+            background: #150B53;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.1em;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            margin: 0 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.6);
+        }
+
+        .error-state {
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .error-icon {
+            font-size: 4em;
+            color: #dc3545;
+            margin-bottom: 20px;
+        }
+
+        .error-title {
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+
+        .error-message {
+            color: #6c757d;
+            margin-bottom: 30px;
+        }
+
+        @media (max-width: 768px) {
+            .content {
+                padding: 20px;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .result-title {
+                font-size: 1.8em;
+            }
+            
+            .score-item {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .score-bar {
+                margin: 15px 0 0 0;
+                width: 100%;
+            }
+            
+            .score-percentage {
+                margin: 10px 0 0 0;
+            }
+        }
+
+        .logo{
+            height: 150px;
+        }
+
+        
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="logo neuma 2025 transparente.png" alt="Logo Neuma 2025" class="logo">
+            <h1>Resultado do Teste VARK</h1>
+            <p>Seu estilo de aprendizagem foi identificado!</p>
+        </div>
+        
+        <div class="content" id="resultContent">
+
+        </div>
+    </div>
+
+    <script src="teste.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            displayResults();
+        });
+    </script>
+</body>
+</html>

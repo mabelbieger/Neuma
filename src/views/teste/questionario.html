@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste VARK</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #CED0FF;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #F9F9F9;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #150B53 0%, #150B53 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .question-container {
+            margin-bottom: 30px;
+            padding: 25px;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            background: #f3eeff;
+            transition: all 0.3s ease;
+        }
+
+        .question-container:hover {
+            border-color: #150B53;
+            box-shadow: 0 5px 15px rgba(79, 172, 254, 0.2);
+        }
+
+        .question-title {
+            font-size: 1.2em;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .option {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            border: 2px solid #dee2e6;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: white;
+        }
+
+        .option:hover {
+            border-color: #d5ceff;
+            background: #e8e8ff;
+        }
+
+        .option input[type="radio"] {
+            margin-right: 12px;
+            transform: scale(1.2);
+        }
+
+        .option.selected {
+            border-color: #150B53;
+            background: #bfbdff;
+            box-shadow: 0 2px 8px rgba(140, 79, 254, 0.3);
+        }
+
+        .submit-container {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 2px solid #e9ecef;
+        }
+
+        .submit-btn {
+            background: #150B53;
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.2em;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(122, 102, 234, 0.4);
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(117, 102, 234, 0.6);
+        }
+
+        .submit-btn:disabled {
+            background: #6c757d;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: #e9ecef;
+            border-radius: 4px;
+            margin-bottom: 30px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #b24ffe 0%, #6600fe 100%);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        .error-message {
+            color: #ffffff;
+            text-align: center;
+            margin-top: 20px;
+            padding: 15px;
+            background: #5c00b9;
+            border: 1px solid #cfc6f5;
+            border-radius: 8px;
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .content {
+                padding: 20px;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .question-container {
+                padding: 20px;
+            }
+        }
+
+        .logo{
+            height: 150px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="logo neuma 2025 transparente.png" alt="Logo Neuma 2025" class="logo">
+            <h1>Teste VARK</h1>
+            <p>Descubra o seu estilo de aprendizagem!</p>
+        </div>
+        
+        <div class="content">
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressBar"></div>
+            </div>
+
+            <form id="varkForm">
+
+                <div class="question-container">
+                    <div class="question-title">1. Quando você precisa aprender a usar um novo aplicativo, você prefere:</div>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="q1" value="V" required>
+                            <span>Assistir a um vídeo tutorial mostrando o passo a passo.</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q1" value="A" required>
+                            <span>Ouvir alguém explicando como usar e fazer perguntas.</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q1" value="R" required>
+                            <span>Ler o manual ou as instruções escritas.</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q1" value="K" required>
+                            <span>Ir testando e explorando por conta própria.</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="question-container">
+                    <div class="question-title">2. Em uma palestra ou aula, o que mais ajuda você a entender o conteúdo?</div>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="q2" value="V" required>
+                            <span>Slides com gráficos, esquemas e imagens.</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q2" value="A" required>
+                            <span>A fala clara e a entonação do palestrante.</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q2" value="R" required>
+                            <span>Receber um resumo por escrito.</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q2" value="K" required>
+                            <span>Participar com atividades, demonstrações ou experiências.</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="question-container">
+                    <div class="question-title">3. Quando você tenta memorizar algo, o que costuma fazer?</div>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="q3" value="V" required>
+                            <span>Associa imagens ou esquemas mentais ao conteúdo.</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q3" value="A" required>
+                            <span>Repete em voz alta ou grava áudios para ouvir depois.</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q3" value="R" required>
+                            <span>Faz anotações, resumos ou reescreve várias vezes.</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q3" value="K" required>
+                            <span>Associa com movimentos, situações práticas ou exemplos do dia a dia.</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="question-container">
+                    <div class="question-title">4. Ao receber uma receita culinária nova, você prefere:</div>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="q4" value="V" required>
+                            <span>Ver um vídeo mostrando a receita sendo preparada.</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q4" value="A" required>
+                            <span>Ouvir alguém explicando o passo a passo por telefone ou pessoalmente.</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q4" value="R" required>
+                            <span>Ler a receita escrita com todos os detalhes.</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q4" value="K" required>
+                            <span>Ir preparando enquanto aprende, mesmo que erre.</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="question-container">
+                    <div class="question-title">5. Quando está em um museu ou local histórico, o que mais chama sua atenção?</div>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="q5" value="V" required>
+                            <span>As imagens, maquetes e exposições visuais.</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q5" value="A" required>
+                            <span>Os áudios com explicações ou guias falando sobre o local.</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q5" value="R" required>
+                            <span>As placas com textos explicativos.</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q5" value="K" required>
+                            <span>As reconstruções interativas ou a possibilidade de tocar objetos.</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="question-container">
+                    <div class="question-title">6. Para aprender um novo idioma, você prefere:</div>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="q6" value="V" required>
+                            <span>Usar aplicativos com imagens e associações visuais.</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q6" value="A" required>
+                            <span>Ouvir músicas, podcasts ou conversar com nativos.</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q6" value="R" required>
+                            <span>Ler textos e fazer anotações de vocabulário.</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q6" value="K" required>
+                            <span>Praticar situações reais, como simulações de diálogos.</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="question-container">
+                    <div class="question-title">7. Quando está tentando lembrar o nome de uma pessoa, você costuma:</div>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="q7" value="V" required>
+                            <span>Visualizar o rosto dela ou o local onde a viu.</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q7" value="A" required>
+                            <span>Recordar a voz ou a conversa que tiveram.</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q7" value="R" required>
+                            <span>Lembrar como o nome era escrito.</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q7" value="K" required>
+                            <span>Recordar o que estavam fazendo juntos.</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="question-container">
+                    <div class="question-title">8. Diante de um novo conteúdo na escola/faculdade, você sente mais facilidade quando:</div>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="q8" value="V" required>
+                            <span>O professor usa esquemas, gráficos e imagens.</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q8" value="A" required>
+                            <span>A explicação é verbal e clara.</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q8" value="R" required>
+                            <span>Há materiais de leitura, apostilas ou slides disponíveis.</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q8" value="K" required>
+                            <span>Você participa de experimentos ou atividades práticas.</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="question-container">
+                    <div class="question-title">9. Em uma loja ou lugar novo, você costuma se orientar melhor:</div>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="q9" value="V" required>
+                            <span>Observando placas, mapas ou sinalizações visuais.</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q9" value="A" required>
+                            <span>Perguntando a alguém como chegar ao local.</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q9" value="R" required>
+                            <span>Lendo descrições ou instruções do local.</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q9" value="K" required>
+                            <span>Caminhando, testando caminhos até encontrar.</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="question-container">
+                    <div class="question-title">10. Qual destas atividades você acha mais agradável para aprender algo novo?</div>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="q10" value="V" required>
+                            <span>Desenhar ou assistir vídeos explicativos.</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q10" value="A" required>
+                            <span>Participar de discussões em grupo ou ouvir podcasts.</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q10" value="R" required>
+                            <span>Ler livros, artigos e fazer anotações.</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q10" value="K" required>
+                            <span>Praticar diretamente, montar, desmontar, experimentar.</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="error-message" id="errorMessage">
+                    Por favor, responda todas as questões antes de enviar.
+                </div>
+
+                <div class="submit-container">
+                    <button type="submit" class="submit-btn" id="submitBtn">
+                        Enviar Respostas
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="teste.js"></script>
+</body>
+</html>

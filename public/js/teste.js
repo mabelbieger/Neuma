@@ -85,7 +85,6 @@ const varkStyles = {
     }
 };
 
-// Função para atualizar a barra de progresso
 function updateProgress() {
     const form = document.getElementById('varkForm');
     if (!form) return;
@@ -100,28 +99,23 @@ function updateProgress() {
     }
 }
 
-// Função para adicionar eventos aos radio buttons
 function setupRadioEvents() {
     const radioButtons = document.querySelectorAll('input[type="radio"]');
     radioButtons.forEach(radio => {
         radio.addEventListener('change', function() {
-            // Remove seleção visual das outras opções da mesma questão
             const questionName = this.name;
             const allOptionsForQuestion = document.querySelectorAll(`input[name="${questionName}"]`);
             allOptionsForQuestion.forEach(option => {
                 option.closest('.option').classList.remove('selected');
             });
             
-            // Adiciona seleção visual à opção escolhida
             this.closest('.option').classList.add('selected');
             
-            // Atualiza barra de progresso
             updateProgress();
         });
     });
 }
 
-// Função para validar se todas as questões foram respondidas
 function validateForm() {
     const form = document.getElementById('varkForm');
     if (!form) return false;
@@ -135,11 +129,9 @@ function validateForm() {
     return true;
 }
 
-// Função para calcular os resultados do VARK
 function calculateResults(formData) {
     const scores = { V: 0, A: 0, R: 0, K: 0 };
     
-    // Conta as respostas para cada estilo
     for (let i = 1; i <= 10; i++) {
         const answer = formData.get(`q${i}`);
         if (answer && scores.hasOwnProperty(answer)) {
@@ -147,7 +139,6 @@ function calculateResults(formData) {
         }
     }
     
-    // Encontra o estilo predominante
     let dominantStyle = 'V';
     let maxScore = scores.V;
     
@@ -158,7 +149,6 @@ function calculateResults(formData) {
         }
     }
     
-    // Calcula percentuais
     const percentages = {};
     for (const style in scores) {
         percentages[style] = (scores[style] / 10) * 100;
@@ -172,20 +162,16 @@ function calculateResults(formData) {
     };
 }
 
-// Função para armazenar resultados (simulando sessão)
 function storeResults(results) {
-    // Simula o conceito de sessão usando sessionStorage (que funciona apenas temporariamente)
-    // Em uma aplicação real com backend, isso seria armazenado no servidor
+    
     const sessionData = {
         timestamp: new Date().toISOString(),
         results: results,
         userAgent: navigator.userAgent
     };
     
-    // Armazena os resultados usando uma variável global como alternativa
     window.varkResults = results;
     
-    // Também tenta usar sessionStorage se disponível (para demonstração do conceito de sessão)
     try {
         sessionStorage.setItem('varkResults', JSON.stringify(sessionData));
     } catch (e) {
@@ -193,14 +179,11 @@ function storeResults(results) {
     }
 }
 
-// Função para recuperar resultados da sessão
 function getStoredResults() {
-    // Primeiro tenta pegar da variável global
     if (window.varkResults) {
         return window.varkResults;
     }
     
-    // Depois tenta pegar do sessionStorage
     try {
         const stored = sessionStorage.getItem('varkResults');
         if (stored) {
@@ -214,13 +197,11 @@ function getStoredResults() {
     return null;
 }
 
-// Função para processar o envio do formulário
 function handleFormSubmit(event) {
     event.preventDefault();
     
     const errorMessage = document.getElementById('errorMessage');
     
-    // Valida se todas as questões foram respondidas
     if (!validateForm()) {
         errorMessage.style.display = 'block';
         errorMessage.scrollIntoView({ behavior: 'smooth' });
@@ -229,20 +210,15 @@ function handleFormSubmit(event) {
     
     errorMessage.style.display = 'none';
     
-    // Coleta as respostas
     const formData = new FormData(event.target);
     
-    // Calcula os resultados
     const results = calculateResults(formData);
     
-    // Armazena os resultados na "sessão"
     storeResults(results);
     
-    // Redireciona para a página de resultados
     window.location.href = 'resultado.html';
 }
 
-// Função para exibir os resultados na página de resultado
 function displayResults() {
     const resultContent = document.getElementById('resultContent');
     if (!resultContent) return;
@@ -304,7 +280,6 @@ function displayResults() {
         </div>
     `;
     
-    // ali em cima ver se fica a parte das tips, Anima as barras de progresso
     setTimeout(() => {
         const scoreFills = document.querySelectorAll('.score-fill');
         scoreFills.forEach((fill, index) => {
@@ -314,24 +289,20 @@ function displayResults() {
     }, 500);
 }
 
-// Inicialização quando o DOM está carregado
 document.addEventListener('DOMContentLoaded', function() {
-    // Se estivermos na página do questionário
     const form = document.getElementById('varkForm');
     if (form) {
         setupRadioEvents();
         form.addEventListener('submit', handleFormSubmit);
-        updateProgress(); // Atualiza barra inicial
+        updateProgress(); 
     }
     
-    // Se estivermos na página de resultados
     const resultContent = document.getElementById('resultContent');
     if (resultContent) {
         displayResults();
     }
 });
 
-// Função adicional para limpar dados da sessão (útil para testes)
 function clearSession() {
     window.varkResults = null;
     try {

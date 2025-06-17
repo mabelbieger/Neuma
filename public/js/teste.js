@@ -239,7 +239,7 @@ function handleFormSubmit(event) {
     storeResults(results);
     
     // Redireciona para a página de resultados
-    window.location.href = 'resultado.html';
+    window.location.href = '/resultado';
 }
 
 // Função para exibir os resultados na página de resultado
